@@ -1,0 +1,27 @@
+.para1{
+    background-color: aquamarine;
+}
+.para2{
+    background-color: blue;
+}
+.para3{
+    background-color: blueviolet;
+}
+
+@media  (min-width: 300px){
+    .container p{
+width:20% ;
+float:left;
+padding:10px;
+    }
+   .para3{
+    background-color: brown;
+   }
+}
+@media print{
+    body{
+        background-color: blue;
+
+    }
+    
+}

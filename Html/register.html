@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div>
+        <h1>Register Form</h1>
+        <form action="#" method="post">
+            <table>
+                <tr>
+                    <td>FirstName<span style="color:red">*</span></td>
+                    <td><input type="text" name="fName" required maxlength="5"/></td>
+                </tr>
+                <tr>
+                    <td>LastName </td>
+                    <td><input type="text" name="lName" readonly/></td>
+                </tr> 
+                <tr>
+                    <td>DOB </td>
+                    <td><input type="date" name="dob" disabled/></td>
+                </tr>               
+                <tr>
+                    <td>Mobile </td>
+                    <td><input type="number" name="mob" /></td>
+                </tr>
+                <tr>
+                    <td>Email </td>
+                    <td><input type="email" name="email" placeholder="Email Id kodu da"/></td>
+                </tr>
+                <tr>
+                    <td>Gender </td>
+                    <td>
+                        <input type="radio" name="gender" value="male"/>Male
+                        <input type="radio" name="gender" value="female"/>Female
+                        <input type="radio" name="gender" value="others"/>Others
+                    </td>
+                </tr>
+                <tr>
+                    <td>Skills </td>
+                    <td>
+                        <input type="checkbox" name="skills" value="html"/>HTML
+                        <input type="checkbox" name="skills" value="css"/>CSS
+                        <input type="checkbox" name="skills" value="js"/>JS
+                    </td>
+                </tr>
+                <tr>
+                    <td>State </td>
+                    <td>
+                        <select name="state">
+                            <option value="TamilNadu">TN</option>
+                            <option value="Kerla">KL</option>
+                            <option>AP</option>
+                            <option>KA</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Entry Time </td>
+                    <td><input type="time" name="entryTm"/></td>
+                </tr>
+                <tr>
+                    <td>Photo </td>
+                    <td><input type="file" name="photo"/></td>
+                </tr>
+                <tr>
+                    <td>Password </td>
+                    <td><input type="password" name="pswd"/></td>
+                </tr>
+                <tr>
+                    <td>Color </td>
+                    <td><input type="color" name="clr"/></td>
+                </tr>
+                <tr>
+                    <td>Address </td>
+                    <td><textarea rows="5" cols="20" name="addr"></textarea></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td><input type="submit" value="Register"/><input type="reset" value="Cancel"/></td>
+                </tr>
+
+        </form>
+    </div>
+</body>
+</html>

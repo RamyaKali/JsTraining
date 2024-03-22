@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predefined Objects Example</title>
+</head>
+<body>
+    <h2>Predefined Objects Example</h2>
+    <input type="text" id="sess" name="sess" onkeyup="sessionExample()"/>
+    <button type="button" onclick="displaySess()">Display Session</button>
+    <button type="button" onclick="deleteSession()">Delete Session</button>
+    <div id="timerMsg"></div>
+    <script>
+        function displaySess(){
+            //sessionStorage.removeItem("sess");
+            //localStorage.removeItem("locSess");
+            console.log(sessionStorage.getItem("sess"));
+        }
+        function deleteSession(){
+            sessionStorage.removeItem("sess");
+            localStorage.removeItem("locSess");
+        }
+        function sessionExample(){
+            let sessData = document.getElementById('sess').value;
+            sessionStorage.setItem("sess", sessData);
+            localStorage.setItem("locSess", sessData);
+        }
+
+        function predinedFunction(){
+
+            setTimeout(()=>{ console.log("Vanthuten")}, 5000);
+            let timerMins = 0;
+            let timerSec = 0;
+            let timerMsg = document.getElementById("timerMsg");
+            setInterval(()=>{
+                if(timerSec==60){
+                    window.location.href = "./pramid.html";
+                    timerMins++;
+                    timerSec = 0;
+                }
+                timerMsg.innerHTML = timerMins + " : " + timerSec;
+                timerSec++;
+            }, 1000);
+        }
+        predinedFunction();
+        
+    </script>
+    
+</body>
+</html>

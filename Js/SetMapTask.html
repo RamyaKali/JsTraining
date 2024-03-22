@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SET & MAP & Array </title>
+</head>
+<body>
+    <h2>Array,set,Map with multiple dataset</h2>
+    <script>
+    const userInfo = [
+  {
+    name: "Ramya",
+    age: 26,
+    mobileNo: "8122645120",
+    address: "123 Main St, tam,chennai",
+    qualification: "Bsc",
+    designation: "Software Engineer"
+  },
+  {
+    name: "Kannan",
+    age: 28,
+    mobileNo: "9876543210",
+    address: "1st cross St,chrompet,chennai",
+    qualification: "Master's Degree",
+    designation: "Data Scientist"
+  },
+  {
+    name: "danush",
+    age: 38,
+    mobileNo: "6542654610",
+    address: "Annanagar,omalur,salem",
+    qualification: "M.E.,Cse",
+    designation: "Developer"
+  }
+];
+
+userInfo.push("name: danush,age: 38, mobileNo: 6542654610,address: Annanagar,omalur,salem,qualification: M.E.,Cse,designation:Developer ");
+userInfo.pop("name: danush,age: 38, mobileNo: 6542654610,address: Annanagar,omalur,salem,qualification: M.E.,Cse,designation:Developer ");
+
+console.log(userInfo);
+</script>
+<script>
+    // Create an empty set to store user information
+const userInfoSet = new Set();
+
+function addUser(name, age, mobileNo, address, qualification, designation) {
+  userInfoSet.add({
+    name: name,
+    age: age,
+    mobileNo: mobileNo,
+    address: address,
+    qualification: qualification,
+    designation: designation
+  });
+}
+
+
+addUser("Janani", 30, "981421526", "kamarajNagar, dindukal, TN", "Bachelor's Degree", "Software Engineer");
+addUser("mary", 28, "9876543210", "1St cross, Kochi, KL", "Master's Degree", "Data Scientist");
+addUser("Janani", 30, "981421526", "kamarajNagar, dindukal, TN", "Bachelor's Degree", "Software Engineer");
+addUser("Sriram", 15, "7965823142", "annaNagar, salem, TN", "BBA", "Tester");
+addUser("Bhuvana", 48, "8122645126", "ramoji St, banglore, KA", "B.E.,Mechanical", "Senior Associate");
+addUser("Ramesh", 35, "6968741520", "8th cross, Hyderabad, AP", "M.E.,Cse", "Develpper");
+
+
+console.log(userInfoSet);
+console.log(userInfoSet.size);
+console.log(userInfoSet.has("Janani", 30, "981421526", "kamarajNagar, dindukal, TN", "Bachelor's Degree", "Software Engineer"));
+console.log(userInfoSet.delete("Janani", 30, "981421526", "kamarajNagar, dindukal, TN", "Bachelor's Degree", "Software Engineer"));
+console.log(userInfoSet);
+</script>
+<script>
+    // Create an empty Map to store user information
+const userInfoMap = new Map();
+
+userInfoMap.set('David',{
+  age: 30,
+  mobileNo: "1234567890",
+  address: " 1St, City, Country",
+  qualification: "Bachelor's Degree",
+  designation: "Software Engineer"
+});
+
+userInfoMap.set('James', {
+  age: 28,
+  mobileNo: "9876543210",
+  address: "annaNagar, salem, TN", 
+  qualification: "Master's Degree",
+  designation: "Data Scientist"
+});
+
+
+    console.log(userInfoMap);
+    //console.log(userInfoMap.delete('James'));
+    console.log(userInfoMap);
+
+let jsonVal =[ {
+        name: "Yukesh",
+        age: 25,
+        address: { "permanent": "Vanthavasi", "communication": "Chennai" },
+        contact: [7418529632, 8529637412],
+        isActive: false
+    },{
+        name: "Yamuna",
+        age: 55,
+        address: { "permanent": "salem", "communication": "Trichy" },
+        contact: [8122645120, 9790091392],
+        isActive: true 
+
+    },{
+        name: "Bhuvana",
+        age: 80,
+        address: { "permanent": "Karur", "communication": "Coimbatore" },
+        contact: [612245813, 9637412201],
+        isActive: false
+    }];
+    console.log(jsonVal);
+            console.log(jsonVal[0].name);
+            console.log(jsonVal[1].age);
+            console.log(jsonVal[2].address.communication);
+           // console.log(jsonVal.address.permanent[1]);
+            console.log(jsonVal.contact);
+        
+
+
+</script>
+</body>
+</html>

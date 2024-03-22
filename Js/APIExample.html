@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Learning Postman</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+        <style>
+            .email{ overflow: hidden; text-overflow: ellipsis; }
+            .btns{ display: flex; column-gap: 10px; }
+            .listOfTbl{ height: calc(100vh - 150px); overflow: auto; }
+            .listOfTbl .row{ padding: 8px 0; }
+            .listOfTbl .row:nth-child(odd){ background-color: #eee; }
+            #update{ display: none; }
+        </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <div class="row mt-4 mb-4 align-items-end">
+                <div class="col col-1"></div>
+                <div class="col">
+                    <label>Name</label>
+                    <input type="text" placeholder="Name" class="form-control" id="nameOfPerson">
+                </div>
+                <div class="col">
+                    <label>Email</label>
+                    <input type="text" placeholder="Email" class="form-control" id="emailId">
+                </div>
+                <div class="col col-2">
+                    <label>Status</label>
+                    <select class="form-control" id="statusVal">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button class="btn btn-info" id="add" onclick="insertData();">Add</button>
+                    <button class="btn btn-info" id="update" onclick="replaceData();">Update</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container listOfTbl" id="listOfTbl"></div>
+
+        <script>
+
+            var baseUrl = "https://retoolapi.dev/doMuDs/testApi";
+            var nameOfPerson = document.getElementById("nameOfPerson"),
+                emailId = document.getElementById("emailId"),
+                statusVal = document.getElementById("statusVal"),
+                ids = "";
+
+            function resetData(){
+                nameOfPerson.value = "";
+                emailId.value = "";
+                //statusVal = statusVal.options.selectedIndex;
+            }
+
+            function getData(){
+                fetch(baseUrl, {
+                    method : 'GET',
+                    headers: {'Content-type': 'application/json; charset=UTF-8'}
+                }).then((response) => { return response.json()})
+                  .then((data) => {
+                    displayData(data)
+                });
+            }getData();
+            
+            function displayData(data){
+                let result = "", index = 1;
+                
+                for(let elm of data){
+                    result += '<div class="row align-items-center">';
+                    result += '<div class="col col-1">'+index+'</div>';
+                    result += '<div class="col">'+elm.Name+'</div>';
+                    result += '<div class="col email">'+elm.Email+'</div>';
+                    result += '<div class="col col-2 text-center">'+(elm.Status == true ? "<i class='bi bi-check-circle-fill text-success'></i>":"<i class='bi bi-x-circle-fill text-danger'></i>")+'</div>';
+                    result += '<div class="col btns">'+
+                                    '<button class="btn btn-warning" onclick="updatetData('+elm.id+')">Update</button>'+
+                                    '<button class="btn btn-danger" onclick="deleteData('+elm.id+')">Delete</button>'+
+                               '</div>';
+                    result += '</div>';
+
+                    index++;
+                }
+                document.getElementById("listOfTbl").innerHTML = result;
+            }
+
+            function insertData(){
+                let personDetail = {
+                    "Name":nameOfPerson.value,
+                    "Email":emailId.value,
+                    "Status":statusVal.options[statusVal.selectedIndex].value == "Yes" ? true:false
+                };
+                fetch(baseUrl, {
+                    method : 'POST',
+                    body: JSON.stringify(personDetail),
+                    headers: {'Content-type': 'application/json; charset=UTF-8'}
+                }).then((response) => { return response.json()})
+                  .then((data) => {
+                    getData();
+                    resetData();
+                  });
+            }
+
+            function updatetData(updatetData){
+                debugger;
+
+                fetch(baseUrl+'/'+updatetData, {
+                    method : 'GET',
+                }).then((response) => { return response.json()})
+                  .then((data) => {
+                    nameOfPerson.value = data.Name;
+                    emailId.value = data.Email;
+                    ids = data.id;
+
+                    //console.log(data.Status);
+                    if(data.Status == false){
+                        statusVal.options.selectedIndex = 1
+                    }
+                    else{
+                        statusVal.options.selectedIndex = 0
+                    }
+                    
+                    console.log(ids);
+                    
+                });
+
+                document.getElementById('add').style.display = "none";
+                document.getElementById('update').style.display = "block";
+
+            }
+
+            function replaceData(){
+
+                let personDetail = {
+                    "Name":nameOfPerson.value,
+                    "Email":emailId.value,
+                    "Status":statusVal.options[statusVal.selectedIndex].value == "Yes" ? true:false
+                };
+
+                fetch(baseUrl+'/'+ids, {
+                    method : 'PATCH',
+                    body: JSON.stringify(personDetail),
+                    headers: {'Content-type': 'application/json; charset=UTF-8'}
+                }).then((response) => { return response.json()})
+                  .then((data) => {
+                    document.getElementById('add').style.display = "block";
+                    document.getElementById('update').style.display = "none";
+                    getData();
+                    resetData();
+                  });
+            }
+
+            function deleteData(idx){
+                fetch(baseUrl+'/'+idx, {
+                    method : 'DELETE',
+                }).then((response) => { return response.json()})
+                  .then((data) => {
+                    getData();
+                });
+            }
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container mt=4">
+        <div id="unshift"> </div>
+            <script>
+                let arShift = [20, 30, 40];
+
+                function unshiftElement(arr1, ele) {
+                    let newArray = [ele];
+                    for (let idx = 0; idx < arr1.length; idx++) {
+                        newArray[idx + 1] = arr1[idx];
+                        console.log(newArray);
+                    } return newArray;
+
+                }
+                //let arr2=[20,30,40];
+                console.log(unshiftElement(arShift, 10));
+
+                //console.log(arr2);
+                // cosole.log(arr2.length);
+
+                document.getElementById("unshift").innerHTML = "Array :" + newArray + "<br> Arraylength" + newArray.length;
+            </script>
+        </div>
+
+</body>
+
+</html>

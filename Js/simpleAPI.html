@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUD Operations</title>
+<style>
+
+    /* Add your CSS styles here */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+.container{
+    margin: 30px 350px;
+}
+    div {
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #output {
+        margin-top: 20px;
+    }
+
+
+</style>
+</head>
+<body>
+    <div class="container mt-4" >
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+        <br>
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" id="mobileNumber">
+        <br>
+        <label for="designation">Designation:</label>
+        <input type="text" id="designation">
+        <br>
+        <label for="location">Location:</label>
+        <input type="text" id="location">
+        <br>
+        <label for="salary">Salary:</label>
+        <input type="text" id="salary">
+        <br>
+        <button onclick="postData()">Create</button>
+        <button onclick="putData()">update</button>
+        <button onclick="deleteData()">delete</button>
+    </div>
+    <div id="output"></div>
+    <div id="apiupdate"></div>
+
+    <script>
+        function getData() {
+            fetch('https://retoolapi.dev/rHTQ76/employeedata')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('output').innerHTML = JSON.stringify(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        function displayData(data){
+                let result = "", index = 1;
+                
+                for(let emp  of data){
+                    result += '<div class="row align-items-center">';
+                    result += '<div class="col col-1">'+index+'</div>';
+                    result += '<div class="col">'+emp.name+'</div>';
+                    result += '<div class="col email">'+emp.mobileNumber+'</div>';
+                    result += '<div class="col email">'+emp.designation+'</div>';
+                    result += '<div class="col email">'+emp.locatiom+'</div>';
+                    
+                    result += '<div class="col email">'+emp.salary+'</div>';
+                    
+                    
+                    result += '<div class="col col-2 text-center">'+(emp.Status == true ? "<i class='bi bi-check-circle-fill text-success'></i>":"<i class='bi bi-x-circle-fill text-danger'></i>")+'</div>';
+                    result += '<div class="col btns">'+
+                                    '<button class="btn btn-warning" onclick="updatetData('+emp.id+')">Update</button>'+
+                                    '<button class="btn btn-danger" onclick="deleteData('+emp.id+')">Delete</button>'+
+                               '</div>';
+                    result += '</div>';
+
+                    index++;
+                }
+                document.getElementById("apiupdate").innerHTML = result;
+            }
+        function postData() {
+            const name = document.getElementById('name').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const designation = document.getElementById('designation').value;
+            const location = document.getElementById('location').value;
+            const salary = document.getElementById('salary').value;
+
+            const data = {
+                name: name,
+                mobilenumber: mobileNumber,
+                designation: designation,
+                location: location,
+                salary: salary
+            };
+
+            fetch('https://retoolapi.dev/rHTQ76/employeedata', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                getData(); // Refresh data after posting
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function deleteData(id) {
+            fetch('https://retoolapi.dev/rHTQ76/employeedata/id', {
+                method: 'DELETE',
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                getData(); // Refresh data after deleting
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function putData(id) {
+            const name = document.getElementById('name').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const designation = document.getElementById('designation').value;
+            const location = document.getElementById('location').value;
+            const salary = document.getElementById('salary').value;
+
+            const data = {
+                name: name,
+                mobilenumber: mobileNumber,
+                designation: designation,
+                location: location,
+                salary: salary
+            };
+
+            fetch('https://retoolapi.dev/rHTQ76/employeedata/id', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert("Update successfully"+id);
+                getData(); 
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .parking-bay {
+            width: 100px;
+            height: 50px;
+            margin: 5px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .free {
+            background-color: green;
+        }
+        .occupied {
+            background-color: orange;
+        }
+    </style>
+    <title>Car Parking System</title>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2>Car Parking System</h2>
+        <label for="vehicleNo">Vehicle No:</label>
+        <input type="text" id="vehicleNo" class="mr-2">
+        <button onclick="parkCar()">Entry</button>
+        <button onclick="searchCar()">Search</button>
+        <button onclick="exitCar()">Exit</button>
+
+        <div class="row mt-3">
+            <div id="parkingBayContainer" class="d-flex">
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const maxParkingBays = 10;
+        let parkingBays = new Array(maxParkingBays).fill(false);
+
+        function parkCar() {
+            let vehicleNo = document.getElementById('vehicleNo').value;
+            let index = parkingBays.indexOf(false);
+
+            if (index !== -1) {
+                parkingBays[index] = true;
+                updateParkingBays();
+                alert(vehicleNo+"is parked at"+(index+1));
+            } else {
+                alert('Parking is full');
+            }
+        }
+
+        function searchCar() {
+            const vehicleNo = document.getElementById('vehicleNo').value;
+            const index = parkingBays.indexOf(vehicleNo);
+
+            if (index !== -1) {
+                alert(vehicleNo + "is parked at bay"+ (index +1));
+            } else {
+                alert(vehicleNo+"not found in the parking");
+            }
+        }
+
+        function exitCar() {
+            let vehicleNo = document.getElementById('vehicleNo').value;
+            let index = parkingBays.indexOf(vehicleNo);
+
+            if (index !== -1) {
+                parkingBays[index] = false;
+                updateParkingBays();
+                alert( vehicleNo+" exited from bay" +(index + 1));
+            } else {
+                alert(vehicleNo+ " not found in the parking");
+            }
+        }
+
+        function updateParkingBays() {
+            let parkingBayContainer = document.getElementById('parkingBayContainer');
+            parkingBayContainer.innerHTML = '';
+
+            for (let i = 0; i < maxParkingBays; i++) {
+                const parkingBay = document.createElement('div');
+            
+                if(bay){
+                    bayElement.className='bay occupied-bay';
+                }else{
+                    bayElement.className='bay free-bay';
+
+                }
+                
+            parkingBay.innerText = i + 1;
+                parkingBayContainer.appendChild(parkingBay);
+            }
+        }
+        // Initial setup
+        updateParkingBays();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- REVERSE THE GIVEN NUMBER-->
+<div class = " container mt-4">
+    <br>
+    <label for="number"> Enter the Number:</label>
+    <input type = "number" id="number">
+    <button onclick="reverseNumber()"> reversed Number</button>
+  <p id="result"></p>
+  <script>
+    function reverseNumber(){
+      let inputNum = Number(document.getElementById('number').value);
+      let reversedNum = 0;
+      while (inputNum != 0){
+        reversedNum = (reversedNum * 10)+(inputNum %10);
+        inputNum= Math.floor(inputNum/10);
+      }
+      document.getElementById('result').textContent = "ReversedNumber:"+ reversedNum;
+    }
+  </script>
+  </div>
+  <div class="container mt-4">
+    <h2> Enter The Number</h2>
+    <input type = "number" id="userValue"/>
+    <button onclick="generateFibonacci()"> Generate Fibonacci Series</button>
+    <h3>Fibonacci Series:</h3>
+    <p id ="fibonacciNumber"></p>
+    <script>
+      function generateFibonacci(){
+        let userValue =Number(document.getElementById('userValue').value);
+        let FibonacciNumber=document.getElementById('fibonacciNumber');
+        let series = [0,1];
+        for (let num=2;num<userValue;num++){
+          series[num]=series[num-1]+series[num -2];
+        }
+        fibonacciNumber.innerHTML=series +", ";
+      }
+    </script>
+  </div>
+  <div class = " container mt-4">
+    <label for="number"> Enter the Number:</label>
+    <input type = "number" id="number">
+    <button onclick="checkPalindrome()"> Check Palindrome</button>
+  <p id="result"></p>
+  <script>
+    function checkPalindrome(){
+      let inputNum = Number(document.getElementById('number').value);
+      let resultElement = document.getElementById("result");
+      let originalNumber=inputNum;
+      let reversedNum = 0;
+      while (inputNum > 0){
+        reversedNum = (reversedNum * 10)+(inputNum %10);
+        inputNum= Math.floor(inputNum/10);
+      }
+      if (originalNumber==reversedNum){
+        resultElement.textContent= '${originalNumber}is a palindrome';
+      } else {
+        resultElement.textContent= '${originalNumber}is  not a palindrome';
+      }
+    }
+</script>
+</div>
+  </body>
+  </html>

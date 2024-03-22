@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Includes</title>
+</head>
+<body>
+    <div id="result"></div>
+
+  <script>
+    function includesElement(arr, target) {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    
+    let myArray = [1, 2, 3, 4, 5];
+    let targetElement = 45;
+
+    
+   let result= includesElement(myArray,targetElement);
+    document.getElementById("result").innerHTML = "Array includes the given element is: " + result;
+    console.log(result);
+  </script>
+  </div>
+<!-- FIND THE INDEX VALUE-->
+<div class= "container mt-4">
+  <div id = 'index'></div>
+  <script>
+    let array=["ananya","raj","thilaga","maddy","raj"];
+    //let findindexStr="raj";
+    function findIndex(arr,search){
+      for (let idx=0;idx<arr.length;idx++){
+        if(arr[idx]===search){
+          return idx;
+        }
+      }
+      return -1; 
+    }
+   let index=findIndex(array,"raj");
+    console.log(findIndex(array,"thilaga"));
+    console.log(index);
+    document.getElementById('index').innerHTML="The index of given Elemement is:"+index;
+  </script>
+  </div>
+<!-- FIND LASTINDEX VALUE-->
+  <div class= "container mt-4">
+    <div id = 'lastindex'></div>
+    <script>
+      let name=["ananya","raj","thilaga","thilaga","maddy","raj"];
+      //let findindexStr="raj";
+      function findLastIndex(arr,search){
+        for (let idx=arr.length-1;idx>=0;idx--){
+          if(arr[idx]===search){
+            return idx;
+          }
+        }
+        return -1; 
+      }
+     let lastindex=findLastIndex(name,"raj");
+      console.log(findLastIndex(name,"thilaga"));
+      console.log(lastindex);
+      document.getElementById('lastindex').innerHTML="The Lastindex of given Elemement is:"+lastindex;
+    </script>
+    </div>
+  <!-- CONCATENATETWOARRAYS-->
+  <div class="container mt-4">
+    <div id="concateArray"></div>
+    <script>
+      let array1=[10,20,30];
+      let array2=[30,40,50,60];
+      function concateArray(Ar1,Ar2){
+        let array3=[];
+        let idx,jdx;
+        for(idx=0;idx<Ar1.length;idx++){
+          array3[idx]=Ar1[idx];
+        }
+        for(jdx=0;jdx<Ar2.length;jdx++){
+          array3[idx+jdx]=Ar2[jdx];
+        }
+        return array3;
+      }
+      let concatenate=concateArray(array1,array2);
+      console.log(concatenate);
+      document.getElementById('concateArray').innerHTML="Concatenate Array is:"+concatenate + "<br>"+"The lengthof Array 3 is:" +concatenate.length;
+    </script>
+  </div>
+
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPs Example</title>
+</head>
+<body>
+    <div>
+        <h2>OOPS Example</h2>
+        <script>
+            
+            class User{
+                userName="";
+                mobile="";
+                address="";
+                age=0;
+
+                getUserInfo(){
+                    console.log(this.userName + " " + this.mobile + " " + this.address);
+                }
+
+                constructor(){
+                    console.log("User Object Created");
+                }
+            }
+
+            let user = new User();
+            user.userName = "Ajith";
+            user.mobile = "7845128956";
+            user.address = "Chennai";
+
+            let user2 = new User();
+            user2.userName = "Surya";
+            user2.mobile = "8956237845";
+            user2.address = "TN";
+
+            user.getUserInfo();
+            user2.getUserInfo();
+
+            user2.userName = "Karthikeyan";
+            user.getUserInfo();
+            user2.getUserInfo();
+
+            let user3 = new User();
+            user3.getUserInfo();
+            
+
+            class UserLogin extends User{
+                pswd = "";
+
+                setPswd(pswd){
+                    this.pswd = pswd;
+                }
+
+                getPswd(){
+                    console.log(this.pswd);
+                }
+
+                constructor(){
+                    super();
+                    console.log("User Login Object Created");
+                }
+            }
+
+            let userLogin1 = new UserLogin();
+            userLogin1.userName = "JayaPrakash";
+            userLogin1.mobile = "9865327845";
+            userLogin1.address = "Chennai";
+            userLogin1.setPswd("ragasiyam");
+            userLogin1.getPswd();
+            userLogin1.pswd = "solla matten";
+            userLogin1.getPswd();
+            userLogin1.getUserInfo();
+            
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pad Start and End</title>
+</head>
+<body>
+  <div id="output"></div>
+  <script>
+function padStarts(str, length, padChar) {
+  while (str.length < length) {
+    str = padChar + str;
+  }
+  return str;
+}
+
+function padEnds(str, length, padChar) {
+  while (str.length < length) {
+    str = str + padChar;
+  }
+  return str;
+}
+
+let paddedStart = padStarts("Hai", 15, "*");
+let paddedEnd = padEnds("Hai", 15, "*");
+
+document.getElementById("output").innerHTML = "Padded Start:"+paddedStart+"<br>"+"Padded End:"+ paddedEnd;
+
+  </script>
+  
+  <div class ="container mt-4">
+    <script>
+        
+function customStartsWith(str, prefix) {
+  for (let idx = 0; idx < prefix.length; idx++) {
+    if (str[idx] !== prefix[idx]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+function customEndsWith(str, suffix) {
+  let strIndex = str.length - suffix.length;
+  for (let idx = 0; idx < suffix.length; idx++) {
+    if (str[strIndex + idx] !== suffix[idx]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+function customSplit(str, splitchar) {
+  let result = [];
+  let currentIndex = 0;
+
+  for (let idx = 0; idx < str.length; idx++) {
+    if (str[idx] === splitchar) {
+      result.push(str.substring(currentIndex, idx));
+      currentIndex = idx + 1;
+    }
+  }
+
+  result.push(str.substring(currentIndex));
+  return result;
+}
+
+
+let text = "Hello,World welcome,All";
+let prefix = "Hello";
+let suffix = "World";
+let splitchar = ",";
+
+console.log(customStartsWith(text, prefix)); 
+console.log(customEndsWith(text, suffix));   
+console.log(customSplit(text, splitchar));
+
+    </script>
+  </div>
+  </body>
+</body>
+</html>

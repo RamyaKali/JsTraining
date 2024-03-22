@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html> 
+<head>
+  <title>Array Manipulation</title>
+</head>
+<body>
+  <script>
+    let myArray = [10, 20, 30, 40];
+    myArray.length = myArray.length - 1; 
+    console.log(myArray);
+    console.log(myArray.length);
+    //document.getElementById("output").innerHTML = "Array: " + myArray + "<br>Array Length: " + myArray.length;
+  </script>
+  <div class="container mt=4">
+    <div id ="shift"></div>
+    <script>
+        
+            let arr=[10,20,30,40,50];
+            for(let index=0;index<arr.length-1;index++){
+                arr[index]=arr[index+1];
+            }
+
+        arr.length = arr.length-1;
+        document.getElementById("shift").innerHTML="Array :"+arr+"<br> Arraylength"+arr.length;
+    </script>
+  </div>
+  
+</body>
+</html>

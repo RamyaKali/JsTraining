@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div class="row m-4">
+            <h2>Pattern1</h2>
+            
+            <p id="pattern"></p>
+            <script>
+                function pattern1(){
+
+                    let result ="";
+                    let br="";
+                    for(let i=1; i <= 5; i++)
+                    {
+                        for(let j=1;j<=i;j++)
+                        {
+                            result+="*"+" ";
+                        }
+                        result+=" "+"<br>";
+                        //document.getElementById('numRangeOp').innerHTML = br;
+                    }
+                    document.getElementById('pattern').innerHTML = result;
+                    
+                }
+                pattern1();
+            </script>
+        </div>
+    
+</body>
+</html>

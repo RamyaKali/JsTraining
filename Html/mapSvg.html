@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapSvg</title>
+</head>
+<body>
+    <div>
+        <h2>Map</h2>
+        <img src="./debby-hudson-MC4KXNpeeD4-unsplash.jpg" height="200px" width="200px"/><br>
+        Link Image
+        <a href="https://www.google.com">
+            <img src="./debby-hudson-MC4KXNpeeD4-unsplash.jpg" height="200px" width="200px"/>
+        </a>
+        <br>
+        Map Image
+        <img src="./debby-hudson-MC4KXNpeeD4-unsplash.jpg" usemap="#Flowerpot" height="200px" width="200px"/>
+        <map name="Flowerpot">
+            <area shape="circle" coords="25,10,20" href="https://www.gmail.com">
+            <area shape="rect" coords="84,13,158,46" href="https://www.yahoo.com" target="_blank">
+            <area shape="poly" coords="74,175,104,147,128,170,149,161,158,187,108,190" href="https://www.amazon.com" target="_blank">
+        </map>
+    </div>
+    <div>
+        <h2>MapSvg</h2>
+        <svg width="400 px " height = "400 px" viewbox ="0 0 400 400 ">
+            <circle  cx ="150" cy="150" r="30" stroke="red" stroke-width="10" fill="yellow"></circle>       
+        
+        </svg>
+    </div>
+    <div>
+        <h2>SVG</h2>
+        <svg width="300" height="300" viewbox="0 0 300 300" style="border: solid 5px yellow;">
+            <line x1="20" y1="20" x2="220" y2="267" stroke="blue" stroke-width="10"></line>
+            <circle cx="150" cy="150" r="30" stroke="red" stroke-width="15" fill="green"></circle>
+            <rect x="120" y="180" width="100" height="100" stroke="purple" fill="white" stroke-width="3"></rect>
+            <polygon points="10 10 150 10 200 100 12 250" fill="none" stroke="grey"></polygon>
+        </svg>
+    </div>
+    <div>
+        <svg width="300" height="300" viewbox="0 0 300 300" style="border: dotted green 5px;">
+            <path stroke="red" stroke-width="3" d="M 20 20 H 200 V 250 L 50 30 M 200 45 H 290 C 250 200 45 23 170 25" fill="none"></path>
+        </svg>
+    </div>
+    
+</body>
+</html>
